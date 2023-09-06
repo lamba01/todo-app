@@ -3,8 +3,12 @@ import { useState } from "react";
 
 function App() {
   const [newItem, setNewitem] = useState("");
-  const [items, setItems] = useState("[]");
+  const [items, setItems] = useState([]);
   function Item() {
+    if (!newItem) {
+      alert("enter an item!");
+      return;
+    }
     const item = {
       id: Math.floor(Math.random() * 1000),
       value: newItem,
@@ -12,7 +16,6 @@ function App() {
     setItems((oldlist) => [...oldlist, item]);
 
     setNewitem("");
-    console.log(item);
   }
   return (
     <div className="App">
@@ -26,7 +29,9 @@ function App() {
       <button onClick={() => Item()}>Add</button>
 
       <ul>
-        <li>test</li>
+        {items.map((item) => {
+          return <li key={item.id}>{item.value}</li>;
+        })}
       </ul>
     </div>
   );
