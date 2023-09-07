@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Checkbox from './checkbox'; // Make sure the path to your Checkbox component is correct
-// import './TodoList.css'; // Import your CSS stylesheet
+import Checkbox from './checkbox'; 
+import './TodoList.css'; // Import your CSS stylesheet
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import DeleteBtn from '../images/icon-cross.svg'
 
 function TodoList() {
   const [newItem, setNewItem] = useState('');
@@ -63,6 +64,7 @@ function TodoList() {
     <div className="App">
       <h1>TODO</h1>
       <div className="input-container">
+        <div className="add-btn"></div>
         <input
           type="text"
           placeholder="Create a new todo"
@@ -71,17 +73,12 @@ function TodoList() {
         />
         <button onClick={addItem}>Add</button>
       </div>
-      <p>{items.length} items</p>
-      <div className="filter-buttons">
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('active')}>Active</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
-      </div>
+      
 
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="todos">
           {(provided) => (
-            <ul ref={provided.innerRef} {...provided.droppableProps}>
+            <ul className='main-list' ref={provided.innerRef} {...provided.droppableProps}>
               {items
                 .filter((item) =>
                   filter === 'completed'
@@ -101,6 +98,7 @@ function TodoList() {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
+                        className='list'
                       >
                         <Checkbox
                           id={`todo-${item.id}`}
@@ -112,17 +110,24 @@ function TodoList() {
                             {item.value}
                           </span>
                         </label>
-                        <button onClick={() => deleteItem(item.id)}>Delete</button>
+                        <img src={DeleteBtn} alt="close-btn" className='delete-btn' onClick={() => deleteItem(item.id)} />
                       </li>
                     )}
                   </Draggable>
                 ))}
               {provided.placeholder}
+              <div className="buttons"><span className='items-left'>{items.length} items left</span>
+              <div className="filter-buttons">
+        <button onClick={() => setFilter('all')}>All</button>
+        <button onClick={() => setFilter('active')}>Active</button>
+        <button onClick={() => setFilter('completed')}>Completed</button>
+      </div>
+      <button className='clear-completed' onClick={clearCompleted}>Clear Completed</button>
+      </div>
             </ul>
           )}
         </Droppable>
       </DragDropContext>
-      <button onClick={clearCompleted}>Clear Completed</button>
     </div>
   );
 }
