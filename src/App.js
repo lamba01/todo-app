@@ -1,4 +1,5 @@
 import "./App.css";
+import Checkbox from "./components/checkbox";
 import { useState } from "react";
 
 function App() {
@@ -17,6 +18,11 @@ function App() {
 
     setNewitem("");
   }
+
+  function deleteItem(id) {
+    const newArray = items.filter((item) => item.id !== id);
+    setItems(newArray);
+  }
   return (
     <div className="App">
       <h1>TODO</h1>
@@ -27,10 +33,16 @@ function App() {
         onChange={(e) => setNewitem(e.target.value)}
       />
       <button onClick={() => Item()}>Add</button>
+      <p>{items.length}</p>
 
       <ul>
         {items.map((item) => {
-          return <li key={item.id}>{item.value}</li>;
+          return (
+            <li key={item.id}>
+              <Checkbox /> {item.value}{" "}
+              <button onClick={() => deleteItem(item.id)}>testt</button>
+            </li>
+          );
         })}
       </ul>
     </div>

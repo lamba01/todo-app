@@ -1,0 +1,41 @@
+/* Checkbox.css */
+
+/* The container for the custom checkbox */
+.custom-checkbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Hide the default browser checkbox */
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* The custom checkbox icon container */
+.checkbox-icon {
+  position: relative;
+  display: inline-block;
+  width: 25px; /* Adjust as needed */
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid #ccc; /* Border style for the checkbox */
+  background-color: gray; /* Background color for the checkbox */
+}
+
+/* Styling for the check icon (hide it by default) */
+.checkbox-icon img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: blue;
+  border-radius: 50%;
+}
+
+/* When the checkbox is checked, display the check icon */
+.custom-checkbox input:checked + .checkbox-icon img {
+  display: flex;
+}
