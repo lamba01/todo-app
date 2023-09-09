@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Checkbox from './checkbox'; 
-import './TodoList.css'; // Import your CSS stylesheet
+import './TodoList.css'; 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import DeleteBtn from '../images/icon-cross.svg'
+import { FiPlus } from "react-icons/fi";
+import Background from "./background"
 
 function TodoList() {
   const [newItem, setNewItem] = useState('');
@@ -61,18 +63,21 @@ function TodoList() {
   }
 
   return (
+    <div>
+    <Background></Background> 
     <div className="App">
-      <h1>TODO</h1>
+         <h1>TODO</h1>
       <div className="input-container">
-        <div className="add-btn"></div>
+        <div className="input-design"></div>
         <input
           type="text"
-          placeholder="Create a new todo"
+          placeholder="Create a new todo..."
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
         />
-        <button onClick={addItem}>Add</button>
+        <FiPlus onClick={addItem} className="add-btn" />
       </div>
+      
       
 
       <DragDropContext onDragEnd={onDragEnd}>
@@ -128,6 +133,13 @@ function TodoList() {
           )}
         </Droppable>
       </DragDropContext>
+      <div className="mobile-filter-buttons">
+        <button onClick={() => setFilter('all')}>All</button>
+        <button onClick={() => setFilter('active')}>Active</button>
+        <button onClick={() => setFilter('completed')}>Completed</button>
+      </div>
+      <p className='drag-text'>Drag and drop to reorder list</p>
+    </div>
     </div>
   );
 }

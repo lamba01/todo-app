@@ -18,12 +18,17 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  border: 1px solid #ccc;
-  background-color: gray;
+  border: 1px solid hsl(233, 14%, 35%);
+  margin: 0;
+  padding: 0;
 }
+
+/* .checkbox-icon:hover {
+  border: ;
+} */
 
 /* Styling for the check icon (hide it by default) */
 .checkbox-icon img {
@@ -32,6 +37,8 @@
   height: 50%;
   object-fit: contain;
   border-radius: 50%;
+  margin: 0;
+  padding: 0;
 }
 .checkbox-input:checked + .checkbox-icon {
   background-image: linear-gradient(
@@ -39,9 +46,18 @@
     hsl(192, 100%, 67%),
     hsl(280, 87%, 65%)
   ); /* Background color when checked */
+  padding: 0;
+  margin: 0;
+  width: 20px;
+  height: 20px;
 }
 /* When the checkbox is checked, display the check icon */
 .checkbox-input:checked + .checkbox-icon img {
-  display: flex;
+  display: block;
   background-size: 100%;
+  padding: 0;
+  margin: 0;
 }
+/* .checkbox-input:checked {
+  font-style: italic;
+} */

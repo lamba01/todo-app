@@ -1,0 +1,26 @@
+.background-image {
+  width: 100%;
+  height: 35vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.background {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+.background-color {
+  height: 65vh;
+  background-color: hsl(235, 21%, 11%);
+}
+@media only screen and (max-width: 520px) {
+  .background-color {
+    height: 80vh;
+  }
+  .background-image {
+    height: 20vh;
+  }
+}
