@@ -59,6 +59,13 @@
   background-color: hsl(235, 24%, 19%);
   border-radius: 5px;
 }
+label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  z-index: 1;
+  max-width: 80%;
+}
 .list :hover {
   color: hsl(236, 33%, 92%);
 }
@@ -76,6 +83,7 @@
   right: 25px;
   cursor: pointer;
   display: none;
+  padding: 10px 0px;
 }
 .list:hover .delete-btn {
   display: block;
@@ -91,7 +99,7 @@
 .mobile-filter-buttons {
   display: none;
 }
-.filter-buttons button,
+.filter-buttons > button,
 .clear-completed {
   border: none;
   background: none;
@@ -100,7 +108,7 @@
   font-weight: 500;
   font-size: 12px;
 }
-.filter-buttons button {
+.filter-buttons > button {
   font-weight: 550;
 }
 .filter-buttons :hover,
@@ -117,9 +125,9 @@
   font-size: small;
   margin: 50px 0px;
 }
-/* .checkbox-input:checked .list {
-  font-size: 100px;
-} */
+.filter-buttons button.active {
+  color: hsl(220, 98%, 61%);
+}
 
 @media only screen and (max-width: 960px) {
   .main-list,
@@ -167,11 +175,17 @@
     font-size: 12px;
     margin: 0px 15px;
   }
+  .mobile-filter-buttons button.active {
+    color: hsl(220, 98%, 61%);
+  }
   .filter-buttons {
     display: none;
   }
   .buttons {
     justify-content: space-between;
     padding: 15px 20px;
+  }
+  label {
+    max-width: 70%;
   }
 }

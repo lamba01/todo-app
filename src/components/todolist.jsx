@@ -74,6 +74,7 @@ function TodoList() {
           placeholder="Create a new todo..."
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
+          className="checkbox-input"
         />
         <FiPlus onClick={addItem} className="add-btn" />
       </div>
@@ -109,6 +110,7 @@ function TodoList() {
                           id={`todo-${item.id}`}
                           checked={item.completed}
                           onChange={() => toggleComplete(item.id)}
+                          className="checkbox-input"
                         />
                         <label htmlFor={`todo-${item.id}`}>
                           <span className={item.completed ? 'completed' : ''}>
@@ -122,10 +124,10 @@ function TodoList() {
                 ))}
               {provided.placeholder}
               <div className="buttons"><span className='items-left'>{items.length} items left</span>
-              <div className="filter-buttons">
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('active')}>Active</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
+      <div className="filter-buttons">
+        <button className={filter === 'all' ? 'active' : ''}onClick={() => setFilter('all')}> All</button>
+        <button className={filter === 'active' ? 'active' : ''} onClick={() => setFilter('active')}>Active</button>
+        <button className={filter === 'completed' ? 'active' : ''} onClick={() => setFilter('completed')}>Completed</button>
       </div>
       <button className='clear-completed' onClick={clearCompleted}>Clear Completed</button>
       </div>
@@ -134,9 +136,9 @@ function TodoList() {
         </Droppable>
       </DragDropContext>
       <div className="mobile-filter-buttons">
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('active')}>Active</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
+        <button className={filter === 'all' ? 'active' : ''}onClick={() => setFilter('all')}> All</button>
+        <button className={filter === 'active' ? 'active' : ''} onClick={() => setFilter('active')}>Active</button>
+        <button className={filter === 'completed' ? 'active' : ''} onClick={() => setFilter('completed')}>Completed</button>
       </div>
       <p className='drag-text'>Drag and drop to reorder list</p>
     </div>
