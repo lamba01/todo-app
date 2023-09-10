@@ -1,3 +1,83 @@
+# Frontend Mentor - Todo app solution
+
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+
+## Table of contents
+
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+
+
+
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Add new todos to the list
+- Mark todos as complete
+- Delete todos from the list
+- Filter by all/active/complete todos
+- Clear all completed todos
+- **Bonus**: Drag and drop to reorder items on the list
+
+### Screenshot
+
+![](/src//images/screenshot.jpg)
+
+
+### Links
+
+- Solution URL: [Solution](https://github.com/lamba01/todo-app)
+- Live Site URL: [Live site](https://todolapp.netlify.app/)
+
+## My process
+
+### Built with
+
+- [React](https://reactjs.org/) - JS library
+- [Next.js](https://nextjs.org/) - React framework
+
+
+### What I learned
+
+
+```jsx
+ useEffect(() => {
+        const storedItems = JSON.parse(localStorage.getItem('todos'));
+        if (storedItems) {
+          setItems(storedItems);
+        }
+      }, []);
+        useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(items));
+  }, [items]);
+```
+
+
+### Continued development
+
+I will continue to build more web apps with react
+
+## Author
+
+- Frontend Mentor - [@lamba](https://www.frontendmentor.io/profile/lamba01)
+- Twitter - [@lambacodes](https://www.twitter.com/lambacodes)
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
