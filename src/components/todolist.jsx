@@ -137,6 +137,11 @@ function TodoList() {
                     )}
                   </Draggable>
                 ))}
+                {items.length === 0 && (
+                 <p className="no-items-message">No todo items left!</p>)} 
+                {filter === 'completed' && 
+                items.filter((item) => item.completed).length === 0 && (
+                 <p className="no-items-message">No completed items</p>)}    
               {provided.placeholder}
               <div className="buttons"><span className='items-left'>{incompleteItemsLength} items left</span>
       <div className="filter-buttons">

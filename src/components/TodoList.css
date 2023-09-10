@@ -72,6 +72,10 @@
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+.no-items-message {
+  text-align: center;
+  padding: 10px 0;
+}
 @keyframes test {
   from {
     text-decoration: none;
