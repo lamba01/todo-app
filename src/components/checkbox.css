@@ -26,10 +26,6 @@
   padding: 0;
 }
 
-/* .checkbox-icon:hover {
-  border: ;
-} */
-
 /* Styling for the check icon (hide it by default) */
 .checkbox-icon img {
   display: none;
@@ -40,21 +36,16 @@
   margin: 0;
   padding: 0;
 }
+/* Background color when checked */
 .checkbox-input:checked + .checkbox-icon {
   background-image: linear-gradient(
     to bottom,
     hsl(192, 100%, 67%),
     hsl(280, 87%, 65%)
-  ); /* Background color when checked */
-  padding: 0;
-  margin: 0;
-  width: 20px;
-  height: 20px;
+  );
 }
 /* When the checkbox is checked, display the check icon */
 .checkbox-input:checked + .checkbox-icon img {
   display: block;
   background-size: 100%;
-  padding: 0;
-  margin: 0;
 }
