@@ -10,6 +10,8 @@ function TodoList() {
   const [newItem, setNewItem] = useState('');
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState('all');
+  const [deletingItems, setDeletingItems] = useState([]);
+
 
   useEffect(() => {
         const storedItems = JSON.parse(localStorage.getItem('todos'));
@@ -34,11 +36,19 @@ function TodoList() {
     setItems((oldList) => [...oldList, newItemObject]);
     setNewItem('');
   }
-
   function deleteItem(id) {
-    const updatedItems = items.filter((item) => item.id !== id);
-    setItems(updatedItems);
+    setDeletingItems([...deletingItems, id]);
+  
+  
+    setTimeout(() => {
+      const updatedItems = items.filter((item) => item.id !== id);
+      setItems(updatedItems);
+  
+      // Remove the item's ID from the deletingItems array
+      setDeletingItems(deletingItems.filter((itemId) => itemId !== id));
+    }, 300); 
   }
+ 
 
   function clearCompleted() {
     const updatedItems = items.filter((item) => !item.completed);
@@ -61,6 +71,8 @@ function TodoList() {
 
     setItems(reorderedItems);
   }
+  const incompleteItems = items.filter((item) => !item.completed);
+  const incompleteItemsLength = incompleteItems.length;
 
   return (
     <div>
@@ -104,7 +116,8 @@ function TodoList() {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        className='list'
+                        key={item.id.toString()}
+                        className={`list ${deletingItems.includes(item.id) ? 'fade-animation' : ''}`}
                       >
                         <Checkbox
                           id={`todo-${item.id}`}
@@ -123,7 +136,7 @@ function TodoList() {
                   </Draggable>
                 ))}
               {provided.placeholder}
-              <div className="buttons"><span className='items-left'>{items.length} items left</span>
+              <div className="buttons"><span className='items-left'>{incompleteItemsLength} items left</span>
       <div className="filter-buttons">
         <button className={filter === 'all' ? 'active' : ''}onClick={() => setFilter('all')}> All</button>
         <button className={filter === 'active' ? 'active' : ''} onClick={() => setFilter('active')}>Active</button>
