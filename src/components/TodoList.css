@@ -67,27 +67,36 @@
   background-color: hsl(235, 24%, 19%);
   border-radius: 5px;
 }
-.list-item-exit {
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-  opacity: 0;
-  position: absolute; /* Position it absolutely */
-  transform: translateX(100%); /* Slide it to the right */
-  transition: transform 0.3s ease-in-out; /* Opacity transition */
+.list.completed {
+  animation-name: test;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes test {
+  from {
+    text-decoration: none;
+    opacity: 1;
+  }
+  to {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
 }
 .fade-animation {
   opacity: 0;
   animation-name: fade;
-  animation-duration: 0.5s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
 @keyframes fade {
   from {
     opacity: 1;
+    transform: translateX(0);
   }
   to {
     opacity: 0;
+    transform: translateX(100%);
   }
 }
 label {

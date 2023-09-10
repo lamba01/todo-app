@@ -117,7 +117,9 @@ function TodoList() {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         key={item.id.toString()}
-                        className={`list ${deletingItems.includes(item.id) ? 'fade-animation' : ''}`}
+                        className={`list ${deletingItems.includes(item.id) ? 'fade-animation' : ''} ${
+                            item.completed ? 'completed' : ''
+                          }`}
                       >
                         <Checkbox
                           id={`todo-${item.id}`}
